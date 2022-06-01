@@ -3,3 +3,4 @@ Plugins
 !Plugins/composer.lock
 Source/*
 !Source/testeshoptheme
+.env
