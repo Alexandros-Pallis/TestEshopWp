@@ -1,0 +1,39 @@
+version: 'version'
+services:
+  wordpress:
+    container_name: wordpress-test-eshop
+    build:
+      context: .
+      dockerfile: Wordpress/dockerfile
+    ports:
+      - 6039:80
+    restart: always
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    environment:
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_PORT=${WORDPRESS_DB_PORT}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - WORDPRESS_DEBUG=${WORDPRESS_DEBUG}
+      - WORDPRESS_AUTH_KEY=${WORDPRESS_AUTH_KEY}
+      - WORDPRESS_SECURE_AUTH_KEY=${WORDPRESS_SECURE_AUTH_KEY}
+      - WORDPRESS_LOGGED_IN_KEY=${WORDPRESS_LOGGED_IN_KEY}
+      - WORDPRESS_NONCE_KEY=${WORDPRESS_NONCE_KEY}
+      - WORDPRESS_AUTH_SALT=${WORDPRESS_AUTH_SALT}
+      - WORDPRESS_SECURE_AUTH_SALT=${WORDPRESS_SECURE_AUTH_SALT}
+      - WORDPRESS_LOGGED_IN_SALT=${WORDPRESS_LOGGED_IN_SALT}
+      - WORDPRESS_NONCE_SALT=${WORDPRESS_NONCE_SALT}
+    volumes:
+      - wordpressData:/var/www/html
+      - wordpressPlugins:/var/www/html/wp-content/plugins:rw
+      - ./Source/:/var/www/html/wp-content/themes
+    network_mode: bridge
+volumes:
+  wordpressData:
+    name: TestEshopWpData
+  wordpressPlugins:
+    name: TestEshopWpPlugins
+    

@@ -1,0 +1,5 @@
+Plugins
+!Plugins/composer.json
+!Plugins/composer.lock
+Source/*
+!Source/testeshoptheme
