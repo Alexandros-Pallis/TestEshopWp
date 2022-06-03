@@ -3,7 +3,7 @@ services:
   wordpress:
     container_name: wordpress-test-eshop
     build:
-      context: .
+      context: ./
       dockerfile: Wordpress/dockerfile
     ports:
       - 6039:80
@@ -31,6 +31,33 @@ services:
       - wordpressPlugins:/var/www/html/wp-content/plugins:rw
       - ./Source/:/var/www/html/wp-content/themes
     network_mode: bridge
+  wordpress-cli:
+    container_name: wp-cli
+    depends_on:
+      - wordpress
+    image: wordpress:cli
+    user: xfs
+    command: tail -f /dev/null
+    environment:
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_PORT=${WORDPRESS_DB_PORT}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - WORDPRESS_DEBUG=${WORDPRESS_DEBUG}
+      - WORDPRESS_AUTH_KEY=${WORDPRESS_AUTH_KEY}
+      - WORDPRESS_SECURE_AUTH_KEY=${WORDPRESS_SECURE_AUTH_KEY}
+      - WORDPRESS_LOGGED_IN_KEY=${WORDPRESS_LOGGED_IN_KEY}
+      - WORDPRESS_NONCE_KEY=${WORDPRESS_NONCE_KEY}
+      - WORDPRESS_AUTH_SALT=${WORDPRESS_AUTH_SALT}
+      - WORDPRESS_SECURE_AUTH_SALT=${WORDPRESS_SECURE_AUTH_SALT}
+      - WORDPRESS_LOGGED_IN_SALT=${WORDPRESS_LOGGED_IN_SALT}
+      - WORDPRESS_NONCE_SALT=${WORDPRESS_NONCE_SALT}
+    volumes:
+      - wordpressData:/var/www/html
+    profiles:
+      - dev
 volumes:
   wordpressData:
     name: TestEshopWpData

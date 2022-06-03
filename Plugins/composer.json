@@ -1,0 +1,24 @@
+{
+   "name": "testeshopwp/plugins",
+   "authors": [
+      {
+         "name": "Alexandros-Pallis",
+         "email": "alexanpall@gmail.com"
+      }
+   ],
+   "require": {
+      "wpackagist-plugin/woocommerce": "^6.5",
+      "wpackagist-plugin/autoconvert-greeklish-permalinks": "^4.0.3"
+   },
+   "repositories": [
+      {
+         "type": "composer",
+         "url": "https://wpackagist.org"
+      }
+   ],
+   "config": {
+      "allow-plugins": {
+         "composer/installers": true
+      }
+   }
+}

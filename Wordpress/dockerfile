@@ -2,4 +2,4 @@ FROM wordpress:latest
 
 WORKDIR /var/www/html/wp-content/plugins
 
-ADD Plugins/wp-content/plugins/plugins.tgz .
+WORKDIR /var/www/html
