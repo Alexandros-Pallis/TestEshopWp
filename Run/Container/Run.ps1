@@ -42,7 +42,8 @@ Write-Output "plugins compressed"
 
 Set-Location -Path $wordpressDockerComposePath
 docker-compose down
-docker-compose up -d --build --no-cache
+docker-compose build --no-cache wordpress
+docker-compose up -d
 if (Test-Path -Path ./.env) {
     Write-Output 'removing env...'
     Remove-Item .env
@@ -61,3 +62,7 @@ if (Test-Path -Path "$($themesDirectory)/themes.tar.gz") {
 }
 
 Set-Location $currentPath
+
+Write-Output "Activating plugins..."
+../Plugins/Activate.ps1
+Write-Output "Plugins activation ended"

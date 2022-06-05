@@ -29,6 +29,7 @@ services:
       - WORDPRESS_NONCE_SALT=${WORDPRESS_NONCE_SALT}
     volumes:
       - wordpressData:/var/www/html:rw
+      - ../Source/themes/testeshop:/var/www/html/wp-content/themes/testeshop
     network_mode: bridge
 
   wordpress-cli:

@@ -8,12 +8,17 @@
    ],
    "require-dev": {
       "wpackagist-plugin/woocommerce": "^6.5",
-      "wpackagist-plugin/autoconvert-greeklish-permalinks": "^4.0"
+      "wpackagist-plugin/autoconvert-greeklish-permalinks": "^4.0",
+      "metorikhq/wc-cyclone": "master"
    },
    "repositories": [
       {
          "type": "composer",
          "url": "https://wpackagist.org"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/metorikhq/wc-cyclone.git"
       }
    ],
    "extra": {
