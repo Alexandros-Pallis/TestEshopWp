@@ -1,14 +1,14 @@
 {
-   "name": "testeshopwp/plugins",
+   "name": "wordpress/testeshop",
    "authors": [
       {
          "name": "Alexandros-Pallis",
          "email": "alexanpall@gmail.com"
       }
    ],
-   "require": {
+   "require-dev": {
       "wpackagist-plugin/woocommerce": "^6.5",
-      "wpackagist-plugin/autoconvert-greeklish-permalinks": "^4.0.3"
+      "wpackagist-plugin/autoconvert-greeklish-permalinks": "^4.0"
    },
    "repositories": [
       {
@@ -16,6 +16,13 @@
          "url": "https://wpackagist.org"
       }
    ],
+   "extra": {
+      "installer-paths": {
+         "plugins/{$name}": [
+            "type:wordpress-plugin"
+         ]
+      }
+   },
    "config": {
       "allow-plugins": {
          "composer/installers": true

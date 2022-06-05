@@ -3,10 +3,11 @@ services:
   wordpress:
     container_name: wordpress-test-eshop
     build:
-      context: ./
+      context: ../
       dockerfile: Wordpress/dockerfile
     ports:
-      - 6039:80
+      - 600:80
+    user: 1000:1000
     restart: always
     extra_hosts:
       - 'host.docker.internal:host-gateway'
@@ -27,16 +28,15 @@ services:
       - WORDPRESS_LOGGED_IN_SALT=${WORDPRESS_LOGGED_IN_SALT}
       - WORDPRESS_NONCE_SALT=${WORDPRESS_NONCE_SALT}
     volumes:
-      - wordpressData:/var/www/html
-      - wordpressPlugins:/var/www/html/wp-content/plugins:rw
-      - ./Source/:/var/www/html/wp-content/themes
+      - wordpressData:/var/www/html:rw
     network_mode: bridge
+
   wordpress-cli:
-    container_name: wp-cli
+    container_name: ${COMPOSE_PROJECT_NAME}-wp-cli
     depends_on:
       - wordpress
     image: wordpress:cli
-    user: xfs
+    user: 1000:1000
     command: tail -f /dev/null
     environment:
       - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
@@ -55,12 +55,10 @@ services:
       - WORDPRESS_LOGGED_IN_SALT=${WORDPRESS_LOGGED_IN_SALT}
       - WORDPRESS_NONCE_SALT=${WORDPRESS_NONCE_SALT}
     volumes:
-      - wordpressData:/var/www/html
-    profiles:
-      - dev
+      - wordpressData:/var/www/html:rw
+    network_mode: bridge
+
 volumes:
   wordpressData:
     name: TestEshopWpData
-  wordpressPlugins:
-    name: TestEshopWpPlugins
     

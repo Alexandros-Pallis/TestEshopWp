@@ -2,4 +2,14 @@ FROM wordpress:latest
 
 WORKDIR /var/www/html/wp-content/plugins
 
+ADD Source/plugins/plugins.tar.gz .
+
+RUN chown www-data:www-data /
+
+WORKDIR /var/www/html/wp-content/themes
+
+ADD Source/themes/themes.tar.gz .
+
+RUN chown www-data:www-data /
+
 WORKDIR /var/www/html

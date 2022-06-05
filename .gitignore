@@ -1,6 +1,2 @@
-Plugins/*
-!Plugins/composer.json
-!Plugins/composer.lock
-Source/*
-!Source/testeshoptheme
-.env
+Source/vendor
+Source/plugins/**

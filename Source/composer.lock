@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88fc03556eca6656e35b6643fa0e0146",
-    "packages": [
+    "content-hash": "f1eb1407436e36a682e458d816d685d1",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "composer/installers",
             "version": "v2.1.1",
@@ -187,7 +188,6 @@
             "homepage": "https://wordpress.org/plugins/woocommerce/"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
